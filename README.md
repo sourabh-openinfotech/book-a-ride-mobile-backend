@@ -125,13 +125,13 @@ more complex scenarios:
 ```shell
 # create a user via: POST /v1/join
 curl -X POST -H "Content-Type: application/json" -d '{"username":"demo","email":"demo@email.com","password":"pass123"}' http://localhost:8000/v1/join
-# should return like: {"code":0,"data":{"username":"demo","email":"demo@email.com","status":1,"created_at":"2020-07-18T16:38:11+08:00","updated_at":"2020-07-18T16:38:11+08:00","id":17},"message":"成功"}
+# should return like: {"code":0,"data":{"username":"demo","email":"demo@email.com","status":1,"created_on":"2020-07-18T16:38:11+08:00","updated_on":"2020-07-18T16:38:11+08:00","id":17},"message":"成功"}
 
 # authenticate the user via: POST /v1/login
 curl -X POST -H "Content-Type: application/json" -d '{"username": "demo", "password": "pass123"}' http://localhost:8000/v1/login
-# should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_at":"2020-07-17T23:49:39+08:00","updated_at":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
+# should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_on":"2020-07-17T23:49:39+08:00","updated_on":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
 
 # refresh a JWT
 curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE' http://localhost:8000/v1/refresh-token
-# should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_at":"2020-07-17T23:49:39+08:00","updated_at":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
+# should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_on":"2020-07-17T23:49:39+08:00","updated_on":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
 ```

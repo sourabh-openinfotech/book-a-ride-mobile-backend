@@ -25,7 +25,7 @@ class LoginUserCest
     {
         $I->haveHttpHeader('content-type', 'application/json');
         $I->sendPOST('/login', [
-            'username' => 'demo',
+            'user_name' => 'demo',
             'password' => 'pass123456',
         ]);
         $I->seeResponseCodeIs(HttpCode::OK); // 200
@@ -43,13 +43,13 @@ class LoginUserCest
         $createUserCest->createUser($I);
         $I->haveHttpHeader('content-type', 'application/json');
         $I->sendPOST('/login', [
-            'username' => 'demo',
+            'user_name' => 'demo',
             'password' => 'pass123',
         ]);
         $I->seeResponseCodeIs(HttpCode::OK); // 200
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['code' => 0]);
         $I->seeResponseJsonMatchesXpath('//data/token');
-        $I->seeResponseJsonMatchesXpath('//data/user/username');
+        $I->seeResponseJsonMatchesXpath('//data/user/user_name');
     }
 }

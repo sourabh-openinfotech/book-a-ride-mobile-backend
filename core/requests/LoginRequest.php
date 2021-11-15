@@ -7,7 +7,7 @@ use Yii;
 
 class LoginRequest extends \yii\base\Model
 {
-    public $username;
+    public $user_name;
     public $password;
 
     /**
@@ -16,8 +16,8 @@ class LoginRequest extends \yii\base\Model
     public function rules()
     {
         return [
-            [['username'], 'filter', 'filter' => 'trim'],
-            [['username', 'password'], 'required'],
+            [['user_name'], 'filter', 'filter' => 'trim'],
+            [['user_name', 'password'], 'required'],
 
             ['password', 'validatePassword'],
         ];
@@ -26,9 +26,9 @@ class LoginRequest extends \yii\base\Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $user = UserService::getUserByUsernameOrEmail($this->username);
+            $user = UserService::getUserByUsernameOrEmail($this->user_name);
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, t('app', 'Incorrect username or password.'));
+                $this->addError($attribute, t('app', 'Incorrect user_name or password.'));
             }
             Yii::$app->user->setIdentity($user);
         }
@@ -40,7 +40,7 @@ class LoginRequest extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'username' => t('app', 'Username'),
+            'user_name' => t('app', 'user_name'),
             'password' => t('app', 'Password'),
             'email' => t('app', 'Email'),
         ];

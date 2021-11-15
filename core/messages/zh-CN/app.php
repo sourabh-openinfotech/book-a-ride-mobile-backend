@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Success Message' => '成功',
-    'Incorrect username or password.' => '账号或者密码错误。',
-    '{attribute} can only be numbers and letters.' => '{attribute}只能为数字和字母。',
-    'Username' => '用户名',
-    'Email' => '邮箱',
-    'Password' => '密码',
-    'The JWT secret must be configured first.' => '必须先配置 JWT_SECRET',
+    'Success Message' => 'Success',
+    'Incorrect username or password.' => 'Incorrect User name or password',
+    '{attribute} can only be numbers and letters.' => '{attribute} can only be number or letters',
+    'user_name' => 'user_name',
+    'Email' => 'Email',
+    'Password' => 'Password',
+    'The JWT secret must be configured first.' => 'JWT_SECRET must be configured first',
 ];

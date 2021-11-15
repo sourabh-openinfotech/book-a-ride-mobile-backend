@@ -26,7 +26,7 @@ class CreateUserCest
         return [
             [
                 'data' => [
-                    'username' => 'demo',
+                    'user_name' => 'demo',
                     'email' => 'demo',
                     'password' => 'pass123',
                 ],
@@ -34,7 +34,7 @@ class CreateUserCest
             ],
             [
                 'data' => [
-                    'username' => 'demo-sdsdkj',
+                    'user_name' => 'demo-sdsdkj',
                     'email' => 'demo@yii.com',
                     'password' => 'pass123',
                 ],
@@ -42,7 +42,7 @@ class CreateUserCest
             ],
             [
                 'data' => [
-                    'username' => 'demo-sdsdkj',
+                    'user_name' => 'demo-sdsdkj',
                     'email' => 'demo@yii.com',
                     'password' => 'pass1',
                 ],
@@ -50,7 +50,7 @@ class CreateUserCest
             ],
             [
                 'data' => [
-                    'username' => 'demo-sdsdkj',
+                    'user_name' => 'demo-sdsdkj',
                     'password' => 'pass1',
                 ],
                 'code' => ErrorCodes::INVALID_ARGUMENT_ERROR
@@ -79,13 +79,13 @@ class CreateUserCest
     {
         $I->haveHttpHeader('content-type', 'application/json');
         $I->sendPOST('/join', [
-            'username' => 'demo',
+            'user_name' => 'demo',
             'email' => 'demo@yii.com',
             'password' => 'pass123',
         ]);
         $I->seeResponseCodeIs(HttpCode::OK); // 200
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(['code' => 0]);
-        $I->seeResponseJsonMatchesXpath('//data/username');
+        $I->seeResponseJsonMatchesXpath('//data/user_name');
     }
 }

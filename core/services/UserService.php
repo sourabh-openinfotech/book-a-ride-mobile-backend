@@ -23,7 +23,7 @@ class UserService
     {
         $user = new User();
         try {
-            $user->username = $request->username;
+            $user->user_name = $request->user_name;
             $user->email = $request->email;
             $user->setPassword($request->password);
             $user->generateAuthKey();
@@ -60,7 +60,7 @@ class UserService
             ->identifiedBy(Yii::$app->name, true)
             ->issuedAt($time)
             ->expiresAt($time + 3600 * 72)
-            ->withClaim('username', \user('username'))
+            ->withClaim('user_name', \user('user_name'))
             ->withClaim('id', \user('id'))
             ->getToken($signer, $key);
     }
@@ -72,7 +72,7 @@ class UserService
      */
     public static function getUserByUsernameOrEmail(string $value)
     {
-        $condition = strpos($value, '@') ? ['email' => $value] : ['username' => $value];
+        $condition = strpos($value, '@') ? ['email' => $value] : ['user_name' => $value];
         return User::find()->where(['status' => UserStatus::ACTIVE])
             ->andWhere($condition)
             ->one();
