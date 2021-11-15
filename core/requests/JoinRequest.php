@@ -6,7 +6,7 @@ use app\core\models\User;
 
 class JoinRequest extends \yii\base\Model
 {
-    public $username;
+    public $user_name;
     public $email;
     public $password;
 
@@ -16,17 +16,17 @@ class JoinRequest extends \yii\base\Model
     public function rules()
     {
         return [
-            [['username', 'email'], 'trim'],
-            [['username', 'email'], 'required'],
+            [['user_name', 'email'], 'trim'],
+            [['user_name', 'email'], 'required'],
 
             [
-                'username',
+                'user_name',
                 'match',
                 'pattern' => '/^[a-z]\w*$/i',
                 'message' => t('app', '{attribute} can only be numbers and letters.')
             ],
-            ['username', 'unique', 'targetClass' => User::class],
-            ['username', 'string', 'min' => 4, 'max' => 60],
+            ['user_name', 'unique', 'targetClass' => User::class],
+            ['user_name', 'string', 'min' => 4, 'max' => 60],
 
             ['email', 'string', 'min' => 2, 'max' => 120],
             ['email', 'unique', 'targetClass' => User::class],
@@ -43,7 +43,7 @@ class JoinRequest extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'username' => t('app', 'Username'),
+            'user_name' => t('app', 'user_name'),
             'password' => t('app', 'Password'),
             'email' => t('app', 'Email'),
         ];

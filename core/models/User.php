@@ -13,15 +13,15 @@ use yiier\helpers\DateHelper;
  * This is the model class for table "{{%user}}".
  *
  * @property int $id
- * @property string $username
+ * @property string $user_name
  * @property string|null $avatar
  * @property string $auth_key
  * @property string $password_hash
  * @property string|null $password_reset_token
  * @property string|null $email
  * @property int|null $status 状态：1正常 0冻结
- * @property int|null $created_at
- * @property int|null $updated_at
+ * @property int|null $created_on
+ * @property int|null $updated_on
  *
  * @property-write string $password
  * @property-read string $authKey
@@ -44,6 +44,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [
                 'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_on',
+                'updatedAtAttribute' => 'updated_on',
                 'value' => date('Y-m-d H:i:s'),
             ],
         ];
@@ -57,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => UserStatus::ACTIVE],
             ['status', 'in', 'range' => [UserStatus::ACTIVE, UserStatus::UNACTIVATED]],
-            [['username'], 'string', 'max' => 60],
+            [['user_name'], 'string', 'max' => 60],
         ];
     }
 
@@ -164,12 +166,12 @@ class User extends ActiveRecord implements IdentityInterface
         $fields = parent::fields();
         unset($fields['auth_key'], $fields['password_hash'], $fields['password_reset_token']);
 
-        $fields['created_at'] = function (self $model) {
-            return DateHelper::datetimeToIso8601($model->created_at);
+        $fields['created_on'] = function (self $model) {
+            return DateHelper::datetimeToIso8601($model->created_on);
         };
 
-        $fields['updated_at'] = function (self $model) {
-            return DateHelper::datetimeToIso8601($model->updated_at);
+        $fields['updated_on'] = function (self $model) {
+            return DateHelper::datetimeToIso8601($model->updated_on);
         };
 
         return $fields;
